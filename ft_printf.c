@@ -6,13 +6,13 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 13:04:06 by cchabeau          #+#    #+#             */
-/*   Updated: 2022/12/20 16:03:48 by cchabeau         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:42:56 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_convert(char type, va_list ap)
+static size_t	ft_convert(char type, va_list ap)
 {
 	int	len;
 
