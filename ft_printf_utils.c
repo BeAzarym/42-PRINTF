@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 10:23:46 by cchabeau          #+#    #+#             */
-/*   Updated: 2022/12/20 16:42:44 by cchabeau         ###   ########.fr       */
+/*   Updated: 2022/12/20 18:19:33 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static size_t	ft_strlen(const char *str)
 {
 	int	i;
 
+	if (!str)
+		return (NULL);
 	i = 0;
 	while (str[i] != '\0')
 		i++;
@@ -65,6 +67,8 @@ size_t	ft_print_nbr_base(unsigned long int n, const char *base)
 	size_t	base_len;
 	size_t	len;
 
+	if (!base)
+		return (NULL);
 	base_len = ft_strlen(base);
 	len = 0;
 	if (n < base_len)
