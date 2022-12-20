@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 13:04:06 by cchabeau          #+#    #+#             */
-/*   Updated: 2022/12/20 16:00:19 by cchabeau         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:03:48 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	ft_printf(const char *format, ...)
 	size_t	i;
 
 	va_start(ap, format);
-	i = 0;
+	i = -1;
 	len = 0;
-	while (format[i])
+	while (format[++i])
 	{
 		if (format[i] == '%')
 		{
@@ -63,7 +63,6 @@ int	ft_printf(const char *format, ...)
 				return (len);
 			len += ft_print_char(format[i]);
 		}
-		i++;
 	}
 	va_end(ap);
 	return (len);
