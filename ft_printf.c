@@ -6,14 +6,17 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 13:04:06 by cchabeau          #+#    #+#             */
-/*   Updated: 2022/12/20 15:05:28 by cchabeau         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:00:19 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_convert(char type, va_list ap, size_t len)
+size_t	ft_convert(char type, va_list ap)
 {
+	int	len;
+
+	len = 0;
 	if (type == 'c')
 		len += ft_print_char(va_arg(ap, int));
 	if (type == 's')
@@ -49,11 +52,17 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			ft_convert(format[i + 1], ap, len);
+			if (format[i + 1] == '\0')
+				return (len);
+			len += ft_convert(format[i + 1], ap);
 			i++;
 		}
 		else
+		{
+			if (format[i] == '\0')
+				return (len);
 			len += ft_print_char(format[i]);
+		}
 		i++;
 	}
 	va_end(ap);

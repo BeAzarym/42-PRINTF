@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 10:23:46 by cchabeau          #+#    #+#             */
-/*   Updated: 2022/12/20 15:11:34 by cchabeau         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:43:11 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	ft_print_str(char *str)
 {
 	int	len;
 
+	if (!str)
+		return (write(1, "(null)", 6));
 	len = ft_strlen(str);
 	return (write(1, str, len));
 }
