@@ -6,22 +6,37 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 10:23:46 by cchabeau          #+#    #+#             */
-/*   Updated: 2022/12/20 23:15:10 by cchabeau         ###   ########.fr       */
+/*   Updated: 2022/12/23 15:53:14 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	ft_strlen(const char *str)
+size_t	ft_convert(char type, va_list ap)
 {
-	int	i;
+	int	len;
 
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	len = 0;
+	if (type == 'c')
+		len += ft_print_char(va_arg(ap, int));
+	if (type == 's')
+		len += ft_print_str(va_arg(ap, char *));
+	if (type == 'p')
+	{
+		len += ft_print_str("0x")
+			+ ft_print_nbr_base(va_arg(ap, unsigned long), "0123456789abcdef");
+	}
+	if (type == 'd' || type == 'i')
+		len += ft_print_nbr(va_arg(ap, int));
+	if (type == 'u')
+		len += ft_print_nbr_base(va_arg(ap, unsigned), "0123456789");
+	if (type == 'x')
+		len += ft_print_nbr_base(va_arg(ap, unsigned), "0123456789abcdef");
+	if (type == 'X')
+		len += ft_print_nbr_base(va_arg(ap, unsigned), "0123456789ABCDEF");
+	if (type == '%')
+		len += ft_print_char('%');
+	return (len);
 }
 
 int	ft_print_char(char c)
