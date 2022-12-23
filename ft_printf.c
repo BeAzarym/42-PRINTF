@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 13:04:06 by cchabeau          #+#    #+#             */
-/*   Updated: 2022/12/20 23:12:25 by cchabeau         ###   ########.fr       */
+/*   Updated: 2022/12/23 11:12:37 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,21 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	size_t	len;
-	size_t	i;
 
 	va_start(ap, format);
-	i = -1;
 	len = 0;
-	while (format[++i])
+	if (!format)
+		return (0);
+	while (*format)
 	{
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			if (format[i + 1] == '\0')
-				return (len);
-			len += ft_convert(format[i + 1], ap);
-			i++;
+			len += ft_convert(*(format + 1), ap);
+			format++;
 		}
 		else
-		{
-			if (format[i] == '\0')
-				return (len);
-			len += ft_print_char(format[i]);
-		}
+			len += ft_print_char(*format);
+		format++;
 	}
 	va_end(ap);
 	return (len);
