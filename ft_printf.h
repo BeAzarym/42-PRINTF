@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 13:00:36 by cchabeau          #+#    #+#             */
-/*   Updated: 2022/12/23 15:54:04 by cchabeau         ###   ########.fr       */
+/*   Updated: 2022/12/23 16:06:00 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include "libft/libft.h"
+# include "./libft/libft.h"
 
 int		ft_printf(const char *format, ...);
 int		ft_print_char(char c);

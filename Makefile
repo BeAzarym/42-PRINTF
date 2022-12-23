@@ -6,7 +6,7 @@
 #    By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/19 12:35:54 by cchabeau          #+#    #+#              #
-#    Updated: 2022/12/23 15:55:25 by cchabeau         ###   ########.fr        #
+#    Updated: 2022/12/23 16:28:08 by cchabeau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,14 +27,17 @@ CC	=	gcc
 
 RM	=	@rm -rf
 
+$(LIB):
+	make -C $(LIB_DIR)
+	mv libft/$(LIB) $(NAME)
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
+	$(CC) $(CFLAGS) -c -I./ $< -o $(<:.c=.o) 
 
 all:	$(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(LIB) $(OBJS) 
 	@make -C $(LIB_DIR)
-	@ar -rcs $(NAME) $(OBJS) $(LIB_DIR)$(LIB)
+	@ar -crs $(NAME) $(LIB_DIR)$(LIB) $(OBJS) 
 
 clean:
 	$(RM) $(OBJS)
