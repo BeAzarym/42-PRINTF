@@ -12,8 +12,8 @@ The implementation handles multiple format specifiers and manages different data
 
 ### Installation
 ```bash
-git clone https://github.com/BeAzarym/ft_printf.git
-cd ft_printf
+git clone https://github.com/BeAzarym/42-PRINTF.git
+cd 42-PRINTF
 make
 ```
 
